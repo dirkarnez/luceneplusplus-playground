@@ -6,9 +6,9 @@ set DOWNLOADS_DIR_LINUX=%DOWNLOADS_DIR:\=/%
 
 SET PATH=^
 %DOWNLOADS_DIR%\PortableGit\bin;^
-%DOWNLOADS_DIR%\x86_64-8.1.0-release-posix-seh-rt_v6-rev0;^
-%DOWNLOADS_DIR%\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\bin;^
-%DOWNLOADS_DIR%\cmake-3.22.2-windows-x86_64\bin;
+%DOWNLOADS_DIR%\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64;^
+%DOWNLOADS_DIR%\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64\bin;^
+%DOWNLOADS_DIR%\cmake-3.26.1-windows-x86_64\bin;
 
 @REM set PATH=^
 @REM D:\Softwares\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64;^
@@ -17,7 +17,11 @@ SET PATH=^
 
 cmake.exe -G"MinGW Makefiles" ^
 -DCMAKE_BUILD_TYPE=Debug ^
--Dportaudio_DIR="%DOWNLOADS_DIR_LINUX%/portaudio-v19.7.0-mingw64-x86_64-posix-seh-rev0-8.1.0/lib/cmake/portaudio" ^
+-DBOOST_ROOT="%DOWNLOADS_DIR_LINUX%/boost-v1.72.0-mingw64-x86_64-posix-seh-rev0-8.1.0/lib/cmake/Boost-1.72.0" ^
+-DBoost_COMPILER=mgw81 ^
+-Dliblucene++_DIR="%DOWNLOADS_DIR_LINUX%/LucenePlusPlus-v3.0.8-mingw64-x86_64-posix-seh-rev0-8.1.0/include/cmake" ^
+-DZLIB_ROOT="%DOWNLOADS_DIR_LINUX%/zlib-v1.2.13-mingw64-x86_64-posix-seh-rev0-8.1.0" ^
+-DZLIB_USE_STATIC_LIBS=ON ^
 -B./cmake-build &&^
 cd cmake-build &&^
 cmake --build . &&^
